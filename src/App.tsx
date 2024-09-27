@@ -1,6 +1,7 @@
 import styles from './styles/index.module.css';
 import UserCard from './components/userCard/UserCard'
 import { useQuery } from '@tanstack/react-query';
+import FilterForm from './components/flterForm/FilterForm';
 
 type userDataType = {
   id: number;
@@ -35,9 +36,14 @@ function App() {
       ),
   })
 
+  const handFilterChange = (searchQry: string, keyToSort:string, order:string ) => {
+    
+  }
 
   return (
-    <div className="App">
+    <section>
+    <div className={styles.app}> 
+      <FilterForm onFormChange={handFilterChange} />
           <div className={styles.container}>
       {isPending && <p>Loading...</p>}
           {error && <p>Error loading data</p>}
@@ -47,6 +53,7 @@ function App() {
           ))}
       </div>
     </div>
+    </section>
   );
 }
 
