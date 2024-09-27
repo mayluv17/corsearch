@@ -1,0 +1,52 @@
+.userWrap {
+  display: flex;
+  max-height: 200px;
+  width: 50%;
+  max-width: 600px;
+  gap: 2rem;
+  color: rgb(113, 113, 113);
+  align-items: center;
+  border-radius: 1rem;
+  padding: 3rem;
+  justify-content: space-around;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  border: 1px solid rgb(230, 230, 230);
+}
+.userWrap:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+.userWrap h4 {
+  font-size: calc(2.75em + 1vmin);
+  color: rgb(25, 152, 242);
+}
+.userWrap h6 {
+  font-size: 2rem;
+  font-weight: 300;
+}
+.userWrap .right {
+  border-left: 1px solid rgb(230, 230, 230);
+  padding: 1rem;
+}
+@media screen and (max-width: 420px) {
+  .userWrap {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: -moz-fit-content !important;
+    max-height: fit-content !important;
+    padding: 20px;
+  }
+  .userWrap .right {
+    border-left: 0;
+    padding: 0.5rem;
+  }
+}
+
+ul li {
+  font-weight: 500;
+  padding: 8px;
+}
+ul li p {
+  font-weight: 300;
+}/*# sourceMappingURL=usercard.module.css.map */

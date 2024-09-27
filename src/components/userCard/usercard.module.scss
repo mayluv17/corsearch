@@ -1,0 +1,56 @@
+@use "../styles/mixins.scss" as mixin;
+.userWrap{
+    display: flex;
+    max-height: 200px;
+    width: 50%;
+    max-width: 600px;
+    gap: 2rem;
+    color: mixin.$text-color;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 3rem;
+    justify-content: space-around;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    border: 1px solid mixin.$gray-2-color;
+
+    &:hover {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+                    0 2px 4px rgba(0, 0, 0, 0.06);
+      }
+
+    h4{
+        font-size: calc(2.75em + 1vmin);
+        color: mixin.$primary-color;
+    }
+    h6{
+        font-size: 2rem;
+        font-weight: 300;
+    }
+    .right{
+        border-left: 1px solid mixin.$gray-2-color;
+        padding: 1rem;
+    }
+
+    @media screen and (max-width:420px){
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        max-height: fit-content !important;
+        padding: 20px;
+        .right{
+            border-left: 0;
+            padding: .5rem;
+        }
+    }
+ 
+}
+
+ul li{
+    font-weight: 500;
+    padding: 8px;
+    p{
+        font-weight: 300;
+    }
+}
+
