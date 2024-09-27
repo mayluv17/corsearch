@@ -1,6 +1,6 @@
 import styles from './usercard.module.css';
 
-type UserCardType = {
+export type UserCardType = {
   userData : {
     id: number;
   name: string;
