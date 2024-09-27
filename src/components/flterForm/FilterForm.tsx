@@ -24,7 +24,7 @@ const FilterForm = ({ onFormChange }: FilterFormType) => {
   const setOrderKey = (e: React.MouseEvent<HTMLButtonElement>,orderKey:string)=>{
     e.preventDefault();
     setSortDescriptor({direction:newOrder,column:orderKey})
-    onFormChange(searchRef.current!.value,orderKey, sortDescriptor.direction);
+    onFormChange(searchRef.current!.value,orderKey, newOrder);
   }
 
   const ShowSortDir = (props:{keyToSort:string})=>{
