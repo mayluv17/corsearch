@@ -1,4 +1,4 @@
-import styles from 'usercard.module.css';
+import styles from './usercard.module.css';
 
 type UserCardType = {
   userData : {
