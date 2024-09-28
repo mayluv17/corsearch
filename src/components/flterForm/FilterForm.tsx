@@ -1,13 +1,15 @@
 import { useRef, useState } from 'react';
 import styles from './filterForm.module.css';
+import { ISortDescriptor, column, direction } from '../../interface';
+import { ShowSortDir } from '../../utilities';
 
 type FilterFormType = {
-  onFormChange: (searchQry: string, keyToSort:string, order: string) => void;
+  onFormChange: (searchQry: string, keyToSort: column, order: direction) => void;
 
 };
 
 const FilterForm = ({ onFormChange }: FilterFormType) => {
-  const [sortDescriptor, setSortDescriptor] = useState({
+  const [sortDescriptor, setSortDescriptor] = useState<ISortDescriptor>({
     column: "name",
     direction: "asc",
   });
@@ -15,23 +17,17 @@ const FilterForm = ({ onFormChange }: FilterFormType) => {
   const searchRef = useRef<HTMLInputElement>(null);
 
   const handleSearchChange = () => {
-    onFormChange(searchRef.current!.value,sortDescriptor.column, sortDescriptor.direction);
-    setSortDescriptor(prev => ({...prev, direction: 'asc',}))
+    onFormChange(searchRef.current!.value, sortDescriptor.column, sortDescriptor.direction);
+    setSortDescriptor(prev => ({...prev, direction: 'asc'}))
   };
 
   const newOrder = sortDescriptor.direction === 'asc' ? 'desc' : 'asc';
 
-  const setOrderKey = (e: React.MouseEvent<HTMLButtonElement>,orderKey:string)=>{
+  const setOrderKey = (e: React.MouseEvent<HTMLButtonElement>, orderKey: column)=>{
     e.preventDefault();
-    setSortDescriptor({direction:newOrder,column:orderKey})
-    onFormChange(searchRef.current!.value,orderKey, newOrder);
+    setSortDescriptor({ direction:newOrder, column: orderKey })
+    onFormChange(searchRef.current!.value, orderKey, newOrder);
   }
-
-  const ShowSortDir = (props:{keyToSort:string})=>{
-    if(props.keyToSort !== sortDescriptor.column) return <></>
-    return <>{sortDescriptor.direction === "asc" ? <span>&uarr;</span> : <span>&darr;</span>}</>
-  }
-
   return (
     <form>
       <div className={styles.formWrap}>
@@ -47,8 +43,12 @@ const FilterForm = ({ onFormChange }: FilterFormType) => {
         </div>
         <div>
           <label htmlFor="order">Order</label>          
-        <div className={styles.formButtons}><button onClick={(e)=>setOrderKey(e,'name')}>Name <ShowSortDir keyToSort={'name'}/></button>
-        <button onClick={(e)=>setOrderKey(e,'email')}>Email <ShowSortDir keyToSort={'email'}/></button></div>
+        <div className={styles.formButtons}><button onClick={(e)=>setOrderKey(e,'name')}>Name 
+        { ShowSortDir('name', sortDescriptor)}</button>
+        <button onClick={(e)=>setOrderKey(e,'email')}>Email 
+       { ShowSortDir('email', sortDescriptor)}
+        </button>
+        </div>
         </div>
       </div>
     </form>

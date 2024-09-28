@@ -1,31 +1,7 @@
+import { IUserData } from '../../interface';
 import styles from './usercard.module.css';
 
-export type UserCardType = {
-  userData : {
-    id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  }};
-};
-
-const UserCard = ({userData}:UserCardType) => {
+const UserCard = ({ userData }: IUserData) => {
     return (
         <div className={styles.userWrap}>
           <div className={styles.left}>
@@ -37,7 +13,7 @@ const UserCard = ({userData}:UserCardType) => {
               <li>Email <p>{userData.email}</p></li>
               <li>Phone <p>{userData.phone}</p></li>
               <li>Website <p>{userData.website}</p></li>
-              {/* <li>Address <p>{`${userData.address.street}, ${userData.address.street}, ${userData.address.zipcode}.`}</p></li> */}
+              <li>Address <p>{`${userData.address.street}, ${userData.address.street}, ${userData.address.zipcode}.`}</p></li>
             </ul>
           </div>
         </div>
