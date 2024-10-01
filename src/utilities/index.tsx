@@ -31,5 +31,5 @@ export const filterUsers = (users: IUser[], hasSearchFilter: boolean, filterValu
 
 export const ShowSortDir = (keyToSort: column, sortDescriptor: ISortDescriptor)=>{
     if(keyToSort !== sortDescriptor.column) return <></>
-    return <>{sortDescriptor.direction === "asc" ? <span>&uarr;</span> : <span>&darr;</span>}</>
+    return <>{sortDescriptor.direction === "asc" ? <span>  &uarr;</span> : <span>  &darr;</span>}</>
   }
